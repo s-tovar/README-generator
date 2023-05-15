@@ -56,7 +56,51 @@ function writeToFile(fileName, data) {
 
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions).then((answers) => {
+        const README = 
+        `# ${answers.title}
+
+        ## Description 
+
+        ${answers.description}
+
+        ## Table of Contents 
+
+        - [Installation](#installation)
+        - [Usage](#usage)
+        - [License](#license)
+        - [Contribution](#contribution)
+        - [Tests](#tests)
+        - [Questions](#questions)
+
+        ## Installation 
+
+        ${answers.installation}
+
+        ## Usage 
+
+        ${answers.usage}
+
+        ## License
+
+        ${answers.license}
+
+        ## Contribution 
+
+        ${answers.contribution}
+
+        ## Tests 
+
+        ${answers.tests}
+
+        ## Questions 
+
+        ${answers.questions}`;
+            
+        writeToFile("README.md", README);
+    });
+}
 
 // Function call to initialize app
 init();
