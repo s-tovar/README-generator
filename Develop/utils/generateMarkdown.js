@@ -28,12 +28,50 @@ function renderLicenseSection(license) {
   if (!license) return '';
   return `## License 
   
-  Distributed under the ${license} license. See ${licensesLinks} for more informataion.`
+  Distributed under the ${license} license. See [${license} license page](${renderLicenseLink(license)}).`;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
+  ${renderLicenseBadge(data.license)}
+  ## Description 
+
+        ${data.description}
+
+        ## Table of Contents 
+
+        - [Installation](#installation)
+        - [Usage](#usage)
+        - [License](#license)
+        - [Contribution](#contribution)
+        - [Tests](#tests)
+        - [Questions](#questions)
+
+        ## Installation 
+
+        ${data.installation}
+
+        ## Usage 
+
+        ${data.usage}
+        ${renderLicenseSection(data.license)}
+
+        ## License
+
+        ${data.license}
+
+        ## Contribution 
+
+        ${data.contribution}
+
+        ## Tests 
+
+        ${data.tests}
+
+        ## Questions 
+
+        Please reach out to ${data.name} on [Github](https://github.com/${data.github}).
 
 `;
 }
